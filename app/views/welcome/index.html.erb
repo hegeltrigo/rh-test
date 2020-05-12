@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row row-centered">
+
+      <% @properties.each_slice(3).to_a.each do |chunk| %>
+
+        <% chunk.each do |property| %>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
+             <div class="card card-primary">
+                <div class="row padall">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <span></span>
+                        <%= image_tag(property.images[0], size: '80x105') if property.images.length > 0 %>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                        <div class="clearfix">
+                            
+                            <div class="float-xs-right">
+                                <%= property.price%>$                                
+                            </div>
+
+                            <div class="float-xs-left">
+                                <span class="fa fa-dollar icon"> <%= property.sqmt %></span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4><span class="fa fa-map-marker icon"></span></h4>
+                            <%= property.address %> <span class="fa fa-search icon float-xs-right"> </span>
+                        </div>
+                        <div class="pull-rigt">
+                            <%= link_to '<button type="button" class="btn btn-success btn-sm">Buy</button>'.html_safe, "/properties/#{property.id}/buy" %>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
+  </div>
+</div>
